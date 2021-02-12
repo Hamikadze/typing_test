@@ -1,0 +1,16 @@
+.KeycapsLayout{
+
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 100%;
+    max-width: 600px;
+}
+
+.KeycapsLayout-row{
+    flex-grow: 1;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
