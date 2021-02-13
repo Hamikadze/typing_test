@@ -26,7 +26,7 @@ function App() {
         <div className="App">
             <header className="App-header"/>
             <div className="App-body">
-                <TextArea text={text}/>
+                {text.length > 0 ? <TextArea text={text}/> : null}
                 <div className={'KeycapsLayout-container'}>
                     <KeycapsLayout/>
                 </div>

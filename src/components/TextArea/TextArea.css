@@ -4,9 +4,11 @@
     border: 2px solid #ccc;
     border-radius: 4px;
     font-size: 16px;
+    line-height: 24px;
     padding: 12px 20px 12px 20px;
     user-select: none;
     text-align: justify;
+    white-space: pre-wrap;
 }
 
 .TextArea:focus{
@@ -37,7 +39,15 @@
     display: inline-block;
 }
 
+.ch-red{
+    border-radius: 3px;
+    background-color: red;
+}
 
+.ch-green{
+    border-radius: 3px;
+    background-color: green;
+}
 
 .cursor-red{
     background-color: red;
