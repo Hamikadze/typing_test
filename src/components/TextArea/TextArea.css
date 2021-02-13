@@ -1,20 +1,17 @@
-input[type="text"] {
-    width: 100%;
+.TextArea{
+    width: 90%;
     box-sizing: border-box;
     border: 2px solid #ccc;
     border-radius: 4px;
     font-size: 16px;
-    background-color: white;
     padding: 12px 20px 12px 20px;
+    user-select: none;
+    text-align: justify;
 }
 
-input[type="text"]:focus {
-    box-shadow: 0px 5px 10px 2px rgba(255, 255, 255, 0.2);
-}
-
-.TextArea{
-    display: flex;
-    flex-direction: row;
+.TextArea:focus{
+    box-shadow: 0px 0px 10px 2px rgba(255, 255, 255, 0.5);
+    outline: none;
 }
 
 .hidden{
@@ -26,8 +23,25 @@ input[type="text"]:focus {
 }
 
 .cursor{
+
+    text-indent: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+
+
     width: 1px;
-    height: 1.5em;
+    height: 1em;
     background-color: white;
+    margin-left: -1px;
+    margin-bottom: -1px;
+    display: inline-block;
+}
+
+
+
+.cursor-red{
+    background-color: red;
+    box-shadow: 0px 0px 5px 4px rgba(255, 0, 0, 0.5);
+    width: 1px;
     margin-left: -1px;
 }

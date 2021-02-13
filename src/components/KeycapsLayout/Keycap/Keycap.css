@@ -8,53 +8,60 @@
 
     border-radius: 5px;
 
-    box-shadow: 0px 5px 10px 2px rgba(0, 0, 0, 0.2);
+    box-shadow: 1px 1px 1px 1px rgba(255, 255, 255, 0.5);
 
     height: 80%;
     margin: 2px;
+    color: #282c34;
 }
 
-.f1{
+.keycap-pressed{
+
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.5) inset;
+}
+
+.f1 {
     background-color: #00BFFF;
 }
 
 
-.f2{
+.f2 {
     background-color: #7FFFD4;
 }
 
 
-.f3{
+.f3 {
     background-color: #00FFFF;
 }
 
 
-.f4{
+.f4 {
     background-color: #DDA0DD;
 }
 
 
-.f5_1{
+.f5_1 {
     background-color: #F4A460;
 }
 
-.f5_2{
+.f5_2 {
     background-color: #FFD700;
 }
 
-.f_wrong{
-    background-color: red;
+.f_wrong {
+    //box-shadow: 0px 0px 5px 4px rgba(255, 0, 0, 1);
+    background-color: #9d1e1e;
 }
 
-.f_select{
+.f_select {
     border-style: solid;
     border-color: white;
 }
 
-.grow-1{
+.grow-1 {
     flex-grow: 1;
 }
 
-.grow-2{
+.grow-2 {
     flex-grow: 2;
 }

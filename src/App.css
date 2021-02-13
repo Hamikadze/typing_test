@@ -4,9 +4,9 @@
   height: calc(var(--vh, 1vh) * 100);
 }
 
-.App-header {
+.App-body {
   background-color: #282c34;
-  min-height: 70%;
+  min-height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -16,9 +16,14 @@
 }
 
 .KeycapsLayout-container{
+  position: absolute;
+  bottom: 0;
+  background-color: #282c34;
 
   display: flex;
   justify-content: center;
   align-items: center;
+  max-height: 350px;
   height: 30%;
+  width: 100%;
 }

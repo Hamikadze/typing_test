@@ -1,58 +1,69 @@
-import React, {useEffect, useRef, useState} from "react";
+import React, {useEffect, useLayoutEffect, useRef, useState} from "react";
 import './TextArea.css';
 
 function TextArea(props) {
     const [cursorState, setCursorState] = useState(false);
-    const [printedText, setPrintedText] = useState('');
-    const [waitText, setWaitText] = useState('Some\u00A0fancy\u00A0text!');
+    const [cursorRed, setCursorRed] = useState(false);
+    const [printedText, setPrintedText] = useState([]);
+    const [text, setText] = useState([]);
+    const textAreaBox = useRef(null);
+
     const handleKeyDown = (event) => {
-        console.log('A key was pressed', event.keyCode);
-        switch (event.keyCode) {
-            case 8:
-                setPrintedText(v => v.slice(0, -1));
-                break;
-            case 16:
-            case 9:
-            case 17:
-            case 20:
-                break;
-            case 32:
-                setPrintedText(v => v += '\u00A0');
-                setWaitText(v => v.slice(1));
-                break;
-            default:
-                setPrintedText(v => v += event.key);
-                setWaitText(v => v.slice(1));
-                break;
+        if (event.altKey || event.ctrlKey || (event.shiftKey && event.keyCode === 16))
+            return;
+        console.log([printedText, text, props.text])
+        if (text[0] === event.key) {
+            setText(v => v.filter((i, index) => index !== 0));
+            setPrintedText(v => [...v, event.key]);
+            setCursorRed(false);
+        } else {
+            setCursorRed(true);
+            setCursorState(true);
+            setTimeout(() => {
+                setCursorRed(false);
+            }, 1000);
+            event.preventDefault();
         }
-        event.preventDefault();
-    };
+    }
+
 
     useEffect(() => {
-        window.addEventListener('keydown', handleKeyDown);
+        if (textAreaBox && textAreaBox.current) {
+            textAreaBox.current.addEventListener('keydown', handleKeyDown);
 
-        // cleanup this component
-        return () => {
-            window.removeEventListener('keydown', handleKeyDown);
-        };
-    }, [])
+            // cleanup this component
+            return () => {
+                if (textAreaBox.current !== null)
+                    textAreaBox.current.removeEventListener('keydown', handleKeyDown);
+            };
+        }
+    }, [printedText])
 
-    useRef()
+    useEffect(() => {
+        setText(props.text);
+
+        console.log([printedText, text, props.text])
+    }, [props])
 
     useEffect(() => {
         const id = setInterval(() => {
-            setCursorState(v => !v);
-        }, 800);
+            if (textAreaBox.current === document.activeElement) {
+                setCursorState(v => !v);
+            } else {
+                setCursorState(false);
+            }
+        }, 500);
         return () => {
             clearInterval(id);
+            setCursorState(false);
         };
     }, [])
 
 
-    return (<div className={'TextArea'}>
-        <div className={'div-text printed-text'}>{printedText}</div>
-        <div className={`div-text cursor ${cursorState ? "" : "hidden"}`}></div>
-        <div className={'div-text wait-text'}>{waitText}</div>
+    return (<div ref={textAreaBox} className={'TextArea'} tabIndex="0">
+        {printedText.map((ch,i) => <span key={`printed-${i}`} className={'printed-text'}>{ch}</span>)}
+        <span className={`cursor ${cursorRed ? 'cursor-red' : ''} ${cursorState ? "" : "hidden"}`}>&nbsp;</span>
+        {text.map((ch, i) => <span className={'wait-text'} key={`text-${i}`}>{ch}</span>)}
     </div>)
 }
 
