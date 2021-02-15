@@ -31,6 +31,7 @@ const TextArea = observer(() => {
     useEffect(() => {
         if (textAreaBox && textAreaBox.current) {
             const element = textAreaBox.current;
+            element.focus();
             element.addEventListener('keydown', handleKeyDown);
 
             // cleanup this component
