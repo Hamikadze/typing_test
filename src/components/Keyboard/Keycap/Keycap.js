@@ -7,7 +7,8 @@ function Keycap(props) {
     }
 
     return (
-        <div style={keycapStyle} className={`Keycap ${props.data.finger} ${props.isPressed ? 'keycap-pressed' : ''}`}>
+        <div style={keycapStyle}
+             className={`Keycap ${props.data.finger} ${props.isPressed ? 'keycap-pressed' : ''} ${props.isSelect ? 'f_select' : ''}`}>
             <span>{props.isShift ? props.data.shiftCh : props.data.ch}</span>
         </div>);
 }

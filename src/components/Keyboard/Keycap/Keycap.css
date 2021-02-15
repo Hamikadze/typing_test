@@ -1,4 +1,5 @@
 .Keycap {
+    box-sizing: border-box;
     width: 1%;
     max-width: 50%;
     height: 80%;
@@ -11,6 +12,8 @@
     box-shadow: 1px 1px 1px 1px rgba(255, 255, 255, 0.5);
     border-radius: 5px;
     color: #282c34;
+
+    border-style: solid;
 }
 
 .keycap-pressed{
@@ -19,30 +22,36 @@
 
 .f1 {
     background-color: #00BFFF;
+    border-color: #00BFFF;
 }
 
 
 .f2 {
     background-color: #7FFFD4;
+    border-color: #7FFFD4;
 }
 
 
 .f3 {
     background-color: #00FFFF;
+    border-color: #00FFFF;
 }
 
 
 .f4 {
     background-color: #DDA0DD;
+    border-color: #DDA0DD;
 }
 
 
 .f5_1 {
     background-color: #F4A460;
+    border-color: #F4A460;
 }
 
 .f5_2 {
     background-color: #FFD700;
+    border-color: #FFD700;
 }
 
 .f_wrong {
