@@ -1,4 +1,5 @@
 .Keycap {
+    border-width: 1px;
     box-sizing: border-box;
     width: 1%;
     max-width: 50%;
@@ -9,57 +10,54 @@
     justify-content: center;
     align-items: center;
 
-    box-shadow: 1px 1px 1px 1px rgba(255, 255, 255, 0.5);
+    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.5);
     border-radius: 5px;
-    color: #282c34;
+    color: rgba(0, 0, 0, 0.4);
 
     border-style: solid;
 }
 
-.keycap-pressed{
+.keycap-pressed {
     box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.5) inset;
 }
 
 .f1 {
-    background-color: #00BFFF;
-    border-color: #00BFFF;
+    background-color: #A087C3;
+    border-color: #A087C3;
 }
 
 
 .f2 {
-    background-color: #7FFFD4;
-    border-color: #7FFFD4;
+    background-color: #CB99C8;
+    border-color: #CB99C8;
 }
 
 
 .f3 {
-    background-color: #00FFFF;
-    border-color: #00FFFF;
+    background-color: #FAB894;
+    border-color: #FAB894;
 }
 
 
 .f4 {
-    background-color: #DDA0DD;
-    border-color: #DDA0DD;
+    background-color: #FFDABA;
+    border-color: #FFDABA;
 }
 
 
 .f5_1 {
-    background-color: #F4A460;
-    border-color: #F4A460;
+    background-color: #FFCC76;
+    border-color: #FFCC76;
 }
 
 .f5_2 {
-    background-color: #FFD700;
-    border-color: #FFD700;
-}
-
-.f_wrong {
-    box-shadow: 1px 1px 1px 1px rgba(255, 0, 0, 1) inset;
-    background-color: #9d1e1e;
+    background-color: #FFB54B;
+    border-color: #FFB54B;
 }
 
 .f_select {
+    font-weight: 400;
+    color: rgb(255, 255, 255);
     border-style: solid;
     border-color: white;
 }

@@ -1,10 +1,10 @@
-import React, {useEffect, useState} from "react";
+import React, {useEffect} from "react";
 import './Keyboard.css';
 import Keycap from './Keycap/Keycap';
 import {observer} from "mobx-react-lite";
 import {useStores} from "../../hooks/use-stores";
 
-const layout_eng = [[
+export const layout_eng = [[
     {ch: '`', shiftCh: '~', code: 192, finger: 'f1', grow: 1},
     {ch: '1', shiftCh: '!', code: 49, finger: 'f2', grow: 1},
     {ch: '2', shiftCh: '@', code: 50, finger: 'f2', grow: 1},
@@ -20,7 +20,7 @@ const layout_eng = [[
     {ch: '=', shiftCh: '+', code: 187, finger: 'f2', grow: 1},
     {ch: '←', shiftCh: '←', code: 8, finger: 'f1', grow: 2}
 ], [
-    {ch: 'TAB', shiftCh: 'TAB', code: 9, finger: 'f1', grow: 2},
+    {ch: 'Tab', shiftCh: 'Tab', code: 9, finger: 'f1', grow: 2},
     {ch: 'q', shiftCh: 'Q', code: 81, finger: 'f2', grow: 1},
     {ch: 'w', shiftCh: 'W', code: 87, finger: 'f3', grow: 1},
     {ch: 'e', shiftCh: 'E', code: 69, finger: 'f4', grow: 1},
@@ -35,7 +35,7 @@ const layout_eng = [[
     {ch: ']', shiftCh: '}', code: 221, finger: 'f2', grow: 1},
     {ch: '\\', shiftCh: '|', code: 220, finger: 'f1', grow: 1}
 ], [
-    {ch: 'CAPS', shiftCh: 'CAPS', code: 20, finger: 'f1', grow: 2},
+    {ch: 'Caps', shiftCh: 'Caps', code: 20, finger: 'f1', grow: 2},
     {ch: 'a', shiftCh: 'A', code: 65, finger: 'f2', grow: 1},
     {ch: 's', shiftCh: 'S', code: 83, finger: 'f3', grow: 1},
     {ch: 'd', shiftCh: 'D', code: 68, finger: 'f4', grow: 1},
@@ -47,9 +47,9 @@ const layout_eng = [[
     {ch: 'l', shiftCh: 'L', code: 76, finger: 'f3', grow: 1},
     {ch: ';', shiftCh: ':', code: 186, finger: 'f2', grow: 1},
     {ch: '\'', shiftCh: '"', code: 222, finger: 'f2', grow: 1},
-    {ch: 'ENTER', shiftCh: 'ENTER', code: 13, finger: 'f1', grow: 2}
+    {ch: 'Enter', shiftCh: 'Enter', code: 13, finger: 'f1', grow: 2}
 ], [
-    {ch: 'SHIFT', shiftCh: 'SHIFT', code: 16, finger: 'f1', grow: 2},
+    {ch: 'Shift', shiftCh: 'Shift', code: 16, finger: 'f1', grow: 2},
     {ch: 'z', shiftCh: 'Z', code: 90, finger: 'f2', grow: 1},
     {ch: 'x', shiftCh: 'X', code: 88, finger: 'f3', grow: 1},
     {ch: 'c', shiftCh: 'C', code: 67, finger: 'f4', grow: 1},
@@ -60,40 +60,26 @@ const layout_eng = [[
     {ch: ',', shiftCh: '<', code: 188, finger: 'f4', grow: 1},
     {ch: '.', shiftCh: '>', code: 190, finger: 'f3', grow: 1},
     {ch: '/', shiftCh: '?', code: 191, finger: 'f2', grow: 1},
-    {ch: 'SHIFT', shiftCh: 'SHIFT', code: 16, finger: 'f1', grow: 2}
+    {ch: 'Shift', shiftCh: 'Shift', code: 16, finger: 'f1', grow: 2}
 ],
-    [{ch: 'SPACE', shiftCh: 'SPACE', code: 32, finger: 'f1', grow: 2}]];
+    [{ch: 'Space', shiftCh: 'Space', code: 32, finger: 'f1', grow: 2}]];
 
 const Keyboard = observer(() => {
 
-    const {textStore} = useStores();
-
-    const [isShift, setIsShift] = useState(false);
-    const [keysPressed, setKeysPressed] = useState([]);
+    const {keyboardStore} = useStores();
 
     const handleKeyDown = (event) => {
-        if (event.keyCode === 16) {
-            setIsShift(event.shiftKey);
-            setKeysPressed(v => [...v, event.keyCode]);
-        } else {
-            setKeysPressed(v => [...v, event.keyCode]);
-        }
+        keyboardStore.addKeyPressed(event.keyCode)
     }
 
     const handleKeyUp = (event) => {
-        if (event.keyCode === 16) {
-            setIsShift(event.shiftKey);
-            setKeysPressed(v => v.filter(i => i !== event.keyCode));
-        } else {
-            setKeysPressed(v => v.filter(i => i !== event.keyCode));
-        }
+        keyboardStore.removeKeyPressed(event.keyCode);
     }
 
     useEffect(() => {
         document.addEventListener('keydown', handleKeyDown);
         document.addEventListener('keyup', handleKeyUp);
 
-        // cleanup this component
         return () => {
             document.removeEventListener('keydown', handleKeyDown);
             document.removeEventListener('keyup', handleKeyUp);
@@ -106,16 +92,7 @@ const Keyboard = observer(() => {
                 return <div key={`row-${index}`} className={`Keyboard-row`}>
                     {
                         row.map((i, index) => {
-                            return <Keycap key={`${i.code}-${index}`}
-                                           data={i}
-                                           isShift={isShift}
-                                           isPressed={keysPressed.includes(i.code)}
-                                           isSelect={
-                                               i.code === 32 && textStore.curLetter.ch === ' '||
-                                               i.code === 16 && textStore.curLetter.enter ||
-                                               i.ch === textStore.curLetter.ch ||
-                                               i.shiftCh === textStore.curLetter.ch
-                                           }/>
+                            return <Keycap key={`${i.code}-${index}`} data={i}/>
                         })
                     }
                 </div>

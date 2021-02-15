@@ -1,29 +1,28 @@
 import {makeAutoObservable} from 'mobx';
-import isEnterKey from "../utils/isEnterKey";
+import isShiftKey from "../utils/isShiftKey";
 
 export default class TextStore {
     text;
     cursorPos;
 
     constructor() {
-        this.text = [];
-        this.cursorPos = 0;
-        this.fetch();
+        this.reset();
 
         makeAutoObservable(this);
     }
 
-    get curLetter() {
-        if (!this.expected.length)
-            return {ch: null, enter: false,}
-        const curLetter = this.expected[0];
-
-        return {ch: curLetter, enter: isEnterKey(curLetter)}
-
+    reset() {
+        this.text = [];
+        this.cursorPos = 0;
+        this.fetch();
     }
 
-    get textLength() {
-        return this.text.length;
+    get curLetter() {
+        if (!this.expected.length)
+            return {ch: null, shift: false,}
+        const curLetter = this.expected[0];
+        return {ch: curLetter, shift: isShiftKey(curLetter)}
+
     }
 
     fetch() {
@@ -34,7 +33,6 @@ export default class TextStore {
             })
             .catch(err => {
                 console.log(err);
-                //setErrors(err);
                 this.setText('Crazy Fredrick bought many very exquisite opal jewels.')
             });
     }

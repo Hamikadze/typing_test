@@ -1,29 +1,36 @@
 .App {
   text-align: center;
-  height: 100vh; /* Fallback for browsers that do not support Custom Properties */
-  height: calc(var(--vh, 1vh) * 100);
+  height: 100vh;
+  width: 100vw;
 }
 
 .App-body {
-  background-color: #282c34;
+  background-color: #f6f6f7;
   min-height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   font-size: calc(10px + 2vmin);
-  color: white;
 }
 
 .Keyboard-container{
+  margin-bottom: 40px;
   position: absolute;
   bottom: 0;
-  background-color: #282c34;
-
   display: flex;
   justify-content: center;
   align-items: center;
   max-height: 350px;
   height: 30%;
   width: 100%;
+}
+
+.TextArea-container{
+  margin-top: 40px;
+  overflow: hidden;
+  border-radius: 5px;
+  width: 80%;
+  max-width: 960px;
+  box-shadow: 0 9px 24px rgba(0, 0, 0, 0.12);
 }

@@ -11,11 +11,9 @@ const TextArea = observer(() => {
 
     const handleKeyDown = (event) => {
         typingStore.initTimeTypingStart();
-        console.log([`[${typingStore.correctPerMinute}]`, `${typingStore.correctOverTypo}%`])
         if (event.defaultPrevented) {
             return; // Do nothing if the event was already processed
         }
-
         if (event.altKey || event.ctrlKey || (event.shiftKey && event.keyCode === 16))
             return;
         if (textStore.curLetter.ch === event.key) {
@@ -42,7 +40,6 @@ const TextArea = observer(() => {
             };
         }
     }, [handleKeyDown]);
-
 
     const element =
         <div ref={textAreaBox} className={'TextArea'} tabIndex="0">

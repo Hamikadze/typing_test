@@ -5,14 +5,19 @@ export default class TypingStore {
     typoCount;
     correctCount;
     complete;
+    result;
 
     constructor() {
+        this.reset();
+        makeAutoObservable(this);
+    }
+
+    reset(){
         this.timeTypingStart = 0;
         this.typoCount = 0;
         this.correctCount = 0;
         this.complete = false;
-
-        makeAutoObservable(this);
+        this.result = null;
     }
 
     setTimeTypingStart(value) {
@@ -50,15 +55,26 @@ export default class TypingStore {
 
     setComplete(value) {
         this.complete = value;
+        if (value) {
+            this.result = {
+                speed: this.speed,
+                accuracy: this.accuracy
+            };
+        }
     }
 
-    get correctPerMinute() {
-        console.log(Date.now() - this.timeTypingStart);
+    get speed() {
+        if (this.result !== null) {
+            return this.result.speed;
+        }
         return Math.round((this.correctCount / ((Date.now() - this.timeTypingStart) / 1000.0)) * 60, 2);
     }
 
-    get correctOverTypo() {
-        return Math.round(100 * this.correctCount / (this.correctCount + this.typoCount), 2);
+    get accuracy() {
+        if (this.result !== null) {
+            return this.result.accuracy;
+        }
+        const accuracy = Math.round(100 * this.correctCount / (this.correctCount + this.typoCount), 2);
+        return isNaN(accuracy) ? 100 : accuracy;
     }
-
 }

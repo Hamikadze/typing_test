@@ -1,30 +1,32 @@
-import './App.css';
-import React, {useEffect, createContext, useContext} from "react";
+import React from 'react';
 import Keyboard from "./components/Keyboard/Keyboard";
 import TextArea from "./components/TextArea/TextArea";
+import StatsPanel from "./components/StatsPanel/StatsPanel";
+import Result from "./components/Result/Result";
+import './App.css';
+import {useStores} from "./hooks/use-stores";
+import {observer} from "mobx-react-lite";
 
-import {observer} from 'mobx-react-lite'
-import {useStores} from './hooks/use-stores'
+const App = observer(() => {
+    const {typingStore} = useStores();
+    const isAndroid = /(android)/i.test(navigator.userAgent);
+    const isIOS = !window.MSStream && /iPad|iPhone|iPod/.test(navigator.userAgent);
 
-const App = () => {
-    //fix for android height
-    let vh = window.innerHeight * 0.01;
-    document.documentElement.style.setProperty('--vh', `${vh}px`);
-
-    const {textStore} = useStores();
-
-    const element =
-        <div className="App">
-            <header className="App-header"/>
-            <div className="App-body">
-                <TextArea/>
+    return <div className="App">
+        <header className="App-header"/>
+        <div className="App-body">
+            {isAndroid || isIOS ? 'Please use a computer instead of a smartphone.' : <>
+                <div className={'TextArea-container'}>
+                    <StatsPanel/>
+                    <TextArea/>
+                </div>
                 <div className={'Keyboard-container'}>
                     <Keyboard/>
                 </div>
-            </div>
-        </div>;
-
-    return element;
-}
+            </>}
+            {typingStore.complete ? <Result/> : null}
+        </div>
+    </div>;
+});
 
 export default App;

@@ -1,19 +1,21 @@
 .TextArea{
-    width: 90%;
-    box-sizing: border-box;
-    border: 2px solid #ccc;
-    border-radius: 4px;
     font-size: 16px;
     line-height: 24px;
     padding: 12px 20px 12px 20px;
     user-select: none;
     text-align: justify;
     white-space: pre-wrap;
+
+    text-rendering: optimizeLegibility;
+    font-weight: 100;
+    color: rgba(0, 0, 0, 0.4);
+    cursor: text;
 }
 
 .TextArea:focus{
-    box-shadow: 0px 0px 10px 2px rgba(255, 255, 255, 0.5);
+    background-color: white;
     outline: none;
+    color: rgba(0, 0, 0, 1);
 }
 
 .hidden{
@@ -21,37 +23,22 @@
 }
 
 .printed-text{
-    color: darkseagreen;
-}
-
-.cursor{
-
-    text-indent: 100%;
-    white-space: nowrap;
-    overflow: hidden;
-
-
-    width: 1px;
-    height: 1em;
-    background-color: white;
-    margin-left: -1px;
-    margin-bottom: -1px;
-    display: inline-block;
+    color: #00cb00;
 }
 
 .ch-red{
     border-radius: 3px;
-    background-color: red;
+    background-color: #ffaeae;
 }
 
-.ch-green{
+.TextArea:focus .ch-green{
     border-radius: 3px;
-    background-color: green;
+    background-color: #b4ffb4;
+    animation: flickerAnimation .5s infinite;
 }
 
-.cursor-red{
-    background-color: red;
-    box-shadow: 0px 0px 5px 4px rgba(255, 0, 0, 0.5);
-    width: 1px;
-    margin-left: -1px;
+@keyframes flickerAnimation {
+    0%   { background-color: #b4ffb4; }
+    50%  { background-color: rgba(0,0,0,0); }
+    100% { background-color: #b4ffb4; }
 }
