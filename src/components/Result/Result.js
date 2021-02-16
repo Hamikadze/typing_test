@@ -8,7 +8,8 @@ import './Result.css';
 const Result = observer(() => {
 
     const {typingStore, textStore} = useStores();
-    function handleClick(){
+
+    function handleClick() {
         typingStore.reset();
         textStore.reset();
     }

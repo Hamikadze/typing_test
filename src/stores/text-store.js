@@ -11,18 +11,30 @@ export default class TextStore {
         makeAutoObservable(this);
     }
 
-    reset() {
-        this.text = [];
-        this.cursorPos = 0;
-        this.fetch();
-    }
-
     get curLetter() {
         if (!this.expected.length)
             return {ch: null, shift: false,}
         const curLetter = this.expected[0];
         return {ch: curLetter, shift: isShiftKey(curLetter)}
 
+    }
+
+    get printed() {
+        return this.text.slice(0, this.cursorPos);
+    }
+
+    get expected() {
+        return this.text.slice(this.cursorPos);
+    }
+
+    get complete() {
+        return !this.expected.length;
+    }
+
+    reset() {
+        this.text = [];
+        this.cursorPos = 0;
+        this.fetch();
     }
 
     fetch() {
@@ -39,18 +51,6 @@ export default class TextStore {
 
     setText(value) {
         this.text = value.replace(/\s\s+/g, ' ').split('');
-    }
-
-    get printed() {
-        return this.text.slice(0, this.cursorPos);
-    }
-
-    get expected() {
-        return this.text.slice(this.cursorPos);
-    }
-
-    get complete() {
-        return !this.expected.length;
     }
 
     setCursorPos(value) {

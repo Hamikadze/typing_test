@@ -1,17 +1,17 @@
-.Keyboard{
-    font-weight: 300;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    width: 100%;
-    max-width: 700px;
-    font-size: 1em;
+.Keyboard {
+	display: flex;
+	flex-direction: column;
+	font-size: 1em;
+	font-weight: 300;
+	height: 100%;
+	max-width: 700px;
+	width: 100%;
 }
 
-.Keyboard-row{
-    flex-grow: 1;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
+.Keyboard-row {
+	align-items: center;
+	display: flex;
+	flex-direction: row;
+	flex-grow: 1;
+	justify-content: center;
 }

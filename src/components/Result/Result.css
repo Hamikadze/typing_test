@@ -21,21 +21,20 @@
 
 .active-container{
     background-color: #f6f6f7;
-
     padding: 12px 20px 12px 20px;
 }
 
 .active-container button{
+    background-color: #A087C3;
     border: none;
     border-radius: 5px;
-    padding: 12px 18px;
-    font-size: 16px;
-    text-transform: uppercase;
-    cursor: pointer;
-    color: white;
-    background-color: #A087C3;
     box-shadow: 0 0 4px #999;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
     outline: none;
+    padding: 12px 18px;
+    text-transform: uppercase;
 }
 
 .active-container button {

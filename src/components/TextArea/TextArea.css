@@ -1,44 +1,50 @@
-.TextArea{
-    font-size: 1em;
-    line-height: 1.5em;
-    padding: 12px 20px 12px 20px;
-    user-select: none;
-    text-align: justify;
-    white-space: pre-wrap;
+.TextArea {
+	color: rgba(0, 0, 0, 0.4);
+	cursor: text;
+	font-size: 1em;
+	font-weight: 100;
+	line-height: 1.5em;
+	padding: 12px 20px 12px 20px;
 
-    text-rendering: optimizeLegibility;
-    font-weight: 100;
-    color: rgba(0, 0, 0, 0.4);
-    cursor: text;
+	text-align: justify;
+	text-rendering: optimizeLegibility;
+	user-select: none;
+	white-space: pre-wrap;
 }
 
-.TextArea:focus{
-    background-color: white;
-    outline: none;
-    color: rgba(0, 0, 0, 1);
+.TextArea:focus {
+	background-color: white;
+	color: rgba(0, 0, 0, 1);
+	outline: none;
 }
 
-.hidden{
-    visibility: hidden;
+.hidden {
+	visibility: hidden;
 }
 
-.printed-text{
-    color: #00cb00;
+.printed-text {
+	color: #00cb00;
 }
 
-.ch-red{
-    border-radius: 3px;
-    background-color: #ffaeae;
+.TextArea:focus .ch-red {
+	background-color: #ffaeae;
+	border-radius: 3px;
 }
 
-.TextArea:focus .ch-green{
-    border-radius: 3px;
-    background-color: #b4ffb4;
-    animation: flickerAnimation .5s infinite;
+.TextArea:focus .ch-green {
+	animation: flickerAnimation .5s infinite;
+	background-color: #b4ffb4;
+	border-radius: 3px;
 }
 
 @keyframes flickerAnimation {
-    0%   { background-color: #b4ffb4; }
-    50%  { background-color: rgba(0,0,0,0); }
-    100% { background-color: #b4ffb4; }
+	0% {
+		background-color: #b4ffb4;
+	}
+	50% {
+		background-color: rgba(0, 0, 0, 0);
+	}
+	100% {
+		background-color: #b4ffb4;
+	}
 }
