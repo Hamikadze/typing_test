@@ -3,7 +3,7 @@
 The deployment is located at: [Typing test](https://hamikadze.github.io/typing_test/)
 
 This project uses:
-* npm / yarn (Both work at the moment, but it is better to use *yarn*)
+* npm
 * React
 * MobX
   * mobx-react-lite
@@ -11,7 +11,7 @@ This project uses:
 
 ## First things first after cloning a repository
 
-Run in the project folder `npm install` or `yarn install`
+Run in the project folder `npm install`
 
 ## Available Scripts
 
@@ -20,7 +20,7 @@ In the project directory, you can run:
 ### `npm start`
 
 Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Open [http://localhost:3000/typing_test](http://localhost:3000/typing_test) to view it in the browser.
 
 The page will reload if you make edits.\
 You will also see any lint errors in the console.
