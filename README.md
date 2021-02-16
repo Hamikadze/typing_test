@@ -11,7 +11,7 @@ This project uses:
 
 ## First things first after cloning a repository
 
-Run in the project folder `npm install`
+Run in the project directory `npm install`
 
 ## Available Scripts
 
