@@ -1,4 +1,4 @@
-# Getting Started
+# Typing test
 
 The deployment is located at: [Typing test](https://hamikadze.github.io/typing_test/)
 
