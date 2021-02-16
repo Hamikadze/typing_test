@@ -1,7 +1,7 @@
 import React from "react";
-import './Keycap.css';
 import {observer} from "mobx-react-lite";
 import {useStores} from "../../../hooks/use-stores";
+import './Keycap.css';
 
 const Keycap = observer((props) => {
     const {keyboardStore, textStore} = useStores();

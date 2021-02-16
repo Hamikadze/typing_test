@@ -1,8 +1,8 @@
 import StatsPanel from "../StatsPanel/StatsPanel";
 import React from "react";
 import {observer} from "mobx-react-lite";
-import './Result.css';
 import {useStores} from "../../hooks/use-stores";
+import './Result.css';
 
 
 const Result = observer(() => {

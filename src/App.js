@@ -3,9 +3,9 @@ import Keyboard from "./components/Keyboard/Keyboard";
 import TextArea from "./components/TextArea/TextArea";
 import StatsPanel from "./components/StatsPanel/StatsPanel";
 import Result from "./components/Result/Result";
-import './App.css';
 import {useStores} from "./hooks/use-stores";
 import {observer} from "mobx-react-lite";
+import './App.css';
 
 const App = observer(() => {
     const {typingStore} = useStores();

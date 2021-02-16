@@ -5,20 +5,18 @@
     max-width: 50%;
     height: 80%;
     margin: 2px;
-
     display: flex;
     justify-content: center;
     align-items: center;
-
-    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.5);
+    box-shadow: 0 0 4px #999;
     border-radius: 5px;
-    color: rgba(0, 0, 0, 0.4);
-
+    color: rgba(0, 0, 0, 0.2);
     border-style: solid;
 }
 
 .keycap-pressed {
-    box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.5) inset;
+    color: rgba(0, 0, 0, 1);
+    box-shadow: none;
 }
 
 .f1 {

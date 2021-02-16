@@ -27,13 +27,13 @@
 
 .active-container button{
     border: none;
-    border-radius: 2px;
+    border-radius: 5px;
     padding: 12px 18px;
     font-size: 16px;
     text-transform: uppercase;
     cursor: pointer;
     color: white;
-    background-color: #2196f3;
+    background-color: #A087C3;
     box-shadow: 0 0 4px #999;
     outline: none;
 }
@@ -43,10 +43,10 @@
     transition: background 0.8s;
 }
 .active-container button:hover {
-    background: #47a7f5 radial-gradient(circle, transparent 1%, #47a7f5 1%) center/15000%;
+    background: #CB99C8 radial-gradient(circle, transparent 1%, #CB99C8 1%) center/15000%;
 }
 .active-container button:active {
-    background-color: #6eb9f7;
+    background-color: #A087C3;
     background-size: 100%;
     transition: background 0s;
 }
